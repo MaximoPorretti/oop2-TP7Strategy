@@ -12,7 +12,6 @@ public class Producto {
     public double getPrecio() {
         return precio;
     }
-
     public double getPeso() {
         return peso;
     }

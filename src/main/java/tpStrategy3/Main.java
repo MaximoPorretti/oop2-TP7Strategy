@@ -1,19 +1,21 @@
 package tpStrategy3;
 
 import tpStrategy3.model.Producto;
-import tpStrategy3.strategy.CalculadorPrecioDescuento;
-import tpStrategy3.strategy.CalculadorPrecioImpuestoReducido;
-import tpStrategy3.strategy.CalculadorPrecioRegular;
+import tpStrategy3.strategy.AlimentoCalculadorStrategy;
+import tpStrategy3.strategy.LibroCalculadorStrategy;
+import tpStrategy3.strategy.MedicinaCalculadorStrategy;
+import tpStrategy3.strategy.OtroCalculadorStrategy;
 
 public class Main {
     public static void main(String[] args) {
-        // Se instancian los productos con su estrategia de cálculo específica.
-        Producto p1 = new Producto(100, 0.21, 0, 50, new CalculadorPrecioRegular());
-        Producto p2 = new Producto(100, 0.21, 0.1, 50, new CalculadorPrecioDescuento());
-        Producto p3 = new Producto(100, 0.21, 0, 50, new CalculadorPrecioImpuestoReducido());
+        var p1 = new Producto(30, new LibroCalculadorStrategy());
+        var p2 = new Producto(330, new MedicinaCalculadorStrategy());
+        var p3 = new Producto(130, new AlimentoCalculadorStrategy());
+        var p4 = new Producto(130, new OtroCalculadorStrategy());
 
-        System.out.println("Precio Regular: " + p1.calcularPrecioFinal());
-        System.out.println("Precio Descuento: " + p2.calcularPrecioFinal());
-        System.out.println("Precio Impuesto Reducido: " + p3.calcularPrecioFinal());
+        System.out.println("Libro (30): " + p1.precioFinal());
+        System.out.println("Medicina (330): " + p2.precioFinal());
+        System.out.println("Alimento (130): " + p3.precioFinal());
+        System.out.println("Otro (130): " + p4.precioFinal());
     }
 } 
